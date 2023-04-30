@@ -73,8 +73,22 @@ class StoryList {
    * Returns the new Story instance
    */
 
-  async addStory( /* user, newStory */) {
+  async addStory( user, { title, author, url } ) { /* user, newStory */
     // UNIMPLEMENTED: complete this function!
+    const userKey = user.loginToken;
+    const res = await axios({
+      method: "POST",
+      url:    `${ BASE_URL }/stories`,
+      data:   { userKey, story: { title, author, url } },
+    });
+
+    const story = new Story( res.data.story );
+    // add new story to the current array of stories
+    // use unshift to make it the first story in the array
+    this.stories.unshift( story );
+    user.ownStories.unshift( story );
+
+    return story;
   }
 }
 

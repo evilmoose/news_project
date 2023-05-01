@@ -105,17 +105,17 @@ async function clickFavorite(event) {
   console.debug("clickfavorite");
 
   const $tar = $(event.target);
-  const $closetLi = $tar.closet("li");
+  const $closetLi = $tar.closest("li");
   const storyId = $closetLi.attr("id");
   const story = storyList.stories.find(stry => stry.storyId === storyId);
 
   if ($tar.hasClass("fas")) {
-    await currentUser.removeFavorite(story);
-    $tar.closet("i").toggleClass("fas far");
+    await currentUser.removeFavorited(story);
+    $tar.closest("i").toggleClass("fas far");
   }
   else {
-    await currentUser.addfavorite(story);
-    $tar.closet("i").toggleClass("fas far");
+    await currentUser.addFavorite(story);
+    $tar.closest("i").toggleClass("fas far");
   }
 }
 
@@ -131,4 +131,4 @@ function getStarButton(story, user) {
     </span>`;
 }
 
-$storiesLists.on("click", "star", clickFavorite);
+$storiesLists.on("click", ".star", clickFavorite);

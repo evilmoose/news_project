@@ -75,14 +75,14 @@ class StoryList {
 
   async addStory( user, { title, author, url } ) { /* user, newStory */
     // UNIMPLEMENTED: complete this function!
-    const userKey = user.loginToken;
-    const res = await axios({
+    const token = user.loginToken;
+    const response = await axios({
       method: "POST",
       url:    `${ BASE_URL }/stories`,
-      data:   { userKey, story: { title, author, url } },
+      data:   { token, story: { title, author, url } },
     });
 
-    const story = new Story( res.data.story );
+    const story = new Story( response.data.story );
     // add new story to the current array of stories
     // use unshift to make it the first story in the array
     this.stories.unshift( story );
@@ -206,5 +206,16 @@ class User {
       console.error("loginViaStoredCredentials failed", err);
       return null;
     }
+  }
+
+  // Add favorite stories to user profile
+  async addOrRemoveFavorite(state, story) {
+    const method = state === "add" ? "POST" : "DELETE";
+    const token = this.loginToken;
+    await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
+      method: method,
+      data: {token},
+    });
   }
 }

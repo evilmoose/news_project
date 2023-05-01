@@ -17,6 +17,7 @@ const $navLogOut = $("#nav-logout");
 // Here I add to the list of const variable that havent been added
 const $submitForm = $("#submit-form");  // adding new story form variable
 const $submitStoryLink = $("submit-story-link");
+const $storiesContainer = $("#stories-container");
 
 /** To make it easier for individual components to show just themselves, this
  * is a useful function that hides pretty much everything on the page. After

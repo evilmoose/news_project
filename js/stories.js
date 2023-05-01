@@ -74,3 +74,22 @@ async function addNewStory(evt) {
 }
 
 $submitForm.on("submit", addNewStory);
+
+// Function to display facorites
+function displayFavorites() {
+  console.debug("displayFavorites");
+
+  $favoritedStories.empty();
+
+  if (currentUser.favorites.length === 0) { 
+    $favoritedStories.append("<h5>You have not added any favorites!</h5>");
+  }
+  else {
+    for (let story of currentUser.favorites) {
+      const $story = generateStoryMarkup(story);
+      $favoritedStories.append($story);
+    }
+  }
+
+  $favoritedStories.show();
+}

@@ -4,20 +4,23 @@
 
 const $body = $("body");
 
-const $storiesLoadingMsg = $("#stories-loading-msg");
-const $allStoriesList = $("#all-stories-list");
+const $storiesLoadingMsg  = $("#stories-loading-msg");
+const $allStoriesList     = $("#all-stories-list");
 
-const $loginForm = $("#login-form");
-const $signupForm = $("#signup-form");
+const $loginForm          = $("#login-form");
+const $signupForm         = $("#signup-form");
 
-const $navLogin = $("#nav-login");
-const $navUserProfile = $("#nav-user-profile");
-const $navLogOut = $("#nav-logout");
+const $navLogin           = $("#nav-login");
+const $navUserProfile     = $("#nav-user-profile");
+const $navLogOut          = $("#nav-logout");
 
 // Here I add to the list of const variable that havent been added
-const $submitForm = $("#submit-form");  // adding new story form variable
-const $submitStoryLink = $("submit-story-link");
-const $storiesContainer = $("#stories-container");
+const $storiesLists       = $(".stories-list")
+const $submitForm         = $("#submit-form");  // adding new story form variable
+const $submitStoryLink    = $("submit-story-link");
+const $storiesContainer   = $("#stories-container");
+const $favoritedStories   = $("#favorited-stories");
+const $myStories          = $("my-stories");
 
 /** To make it easier for individual components to show just themselves, this
  * is a useful function that hides pretty much everything on the page. After
@@ -29,6 +32,8 @@ function hidePageComponents() {
     $allStoriesList,
     $loginForm,
     $signupForm,
+    $storiesLists,
+    $submitForm
   ];
   components.forEach(c => c.hide());
 }

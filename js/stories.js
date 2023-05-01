@@ -93,3 +93,24 @@ function displayFavorites() {
 
   $favoritedStories.show();
 }
+
+// Function to handle clicking on favorite and unclicking
+async function clickFavorite(event) {
+  console.debug("clickfavorite");
+
+  const $tar = $(event.target);
+  const $closetLi = $tar.closet("li");
+  const storyId = $closetLi.attr("id");
+  const story = storyList.stories.find(stry => stry.storyId === storyId);
+
+  if ($tar.hasClass("fas")) {
+    await currentUser.removeFavorite(story);
+    $tar.closet("i").toggleClass("fas far");
+  }
+  else {
+    await currentUser.addfavorite(story);
+    $tar.closet("i").toggleClass("fas far");
+  }
+}
+
+$storiesLists.on("click", "star", clickFavorite);

@@ -23,14 +23,20 @@ function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
 
   const hostName = story.getHostName();
+
+  const showStar = Boolean(currentUser);
+
   return $(`
       <li id="${story.storyId}">
+      <div>
+        ${showStar ? getStarButton(story, currentUser) : ""}
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
         <small class="story-hostname">(${hostName})</small>
         <small class="story-author">by ${story.author}</small>
         <small class="story-user">posted by ${story.username}</small>
+      </div>
       </li>
     `);
 }
@@ -111,6 +117,18 @@ async function clickFavorite(event) {
     await currentUser.addfavorite(story);
     $tar.closet("i").toggleClass("fas far");
   }
+}
+
+// Add a star button for favorites
+
+function getStarButton(story, user) {
+  const isFavorite = user.isFavorite(story);
+  const star = isFavorite ? "fas" : "far";
+
+  return `
+    <span class="star">
+      <i class="${star} fa-star"></i>
+    </span>`;
 }
 
 $storiesLists.on("click", "star", clickFavorite);

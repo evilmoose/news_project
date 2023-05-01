@@ -230,5 +230,9 @@ class User {
     this.favorites = this.favorites.filter(stry => stry.storyId != story.storyId);
     await this.addOrRemoveFavorite("remove", story);
   }
+
+  isFavorite(story) {
+    return this.favorites.some(str => (str.storyId === story.storyId));
+  }
 }
 

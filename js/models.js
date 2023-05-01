@@ -208,7 +208,7 @@ class User {
     }
   }
 
-  // Add favorite stories to user profile
+  // Funtion to get addOrRemove feature from API
   async addOrRemoveFavorite(state, story) {
     const method = state === "add" ? "POST" : "DELETE";
     const token = this.loginToken;
@@ -218,4 +218,17 @@ class User {
       data: {token},
     });
   }
+
+  // Function to add a favorited story to user profile
+  async addFavorite(story) {
+    this.favorites.push(stop);
+    await this.addOrRemoveFavorite("add", story);
+  }
+
+  // Function to remove a favorited story from the users favorited list
+  async removeFavorited(story) {
+    this.favorites = this.favorites.filter(stry => stry.storyId != story.storyId);
+    await this.addOrRemoveFavorite("remove", story);
+  }
 }
+

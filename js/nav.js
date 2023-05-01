@@ -34,3 +34,13 @@ function updateNavOnLogin() {
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
 }
+
+// function that is called when users click that navbar link.
+function submitStoryClick(evt) {
+  console.debug("SubmitStoryClick", evt);
+  hidePageComponents();
+  $allStoriesList.show();
+  $submitForm.show();
+}
+
+$submitStoryLink.on("click", submitStoryClick);

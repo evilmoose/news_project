@@ -46,3 +46,12 @@ function submitStoryClick(evt) {
 }
 
 $submitStoryLink.on("click", submitStoryClick);
+
+// Function for handling clicking on the 'favorites' link in the nav bar
+function favoritedStoriesClick(evt) {
+  console.debug("favoritedStoriesClick, evt");
+  hidePageComponents();
+  displayFavorites();
+}
+
+$body.on("click", $favoritesLink, favoritedStoriesClick)

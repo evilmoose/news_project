@@ -20,6 +20,7 @@ const $submitForm         = $("#submit-form");  // adding new story form variabl
 const $submitStoryLink    = $("#submit-story-link");
 const $storiesContainer   = $("#stories-container");
 const $favoritedStories   = $("#favorited-stories");
+const $favoritesLink      = $("#favorites-link");
 const $myStories          = $("my-stories");
 
 /** To make it easier for individual components to show just themselves, this

@@ -29,7 +29,7 @@ $navLogin.on("click", navLoginClick);
 
 function updateNavOnLogin() {
   console.debug("updateNavOnLogin");
-  $(".main-nav-links").show();
+  $(".user-nav-links").show();
   $navLogin.hide();
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
@@ -37,7 +37,7 @@ function updateNavOnLogin() {
 
 // function that is called when users click that navbar link.
 function submitStoryClick(evt) {
-  console.debug("SubmitStoryClick", evt);
+  console.debug("submitStoryClick", evt);
   hidePageComponents();
   $allStoriesList.show();
   $submitForm.show();

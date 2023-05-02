@@ -58,9 +58,9 @@ function putStoriesOnPage() {
 }
 
 // Function to add story when submit-form is clicked.
-async function addNewStory(evt) {
+async function addNewStory(event) {
   console.debug("addNewStory");
-  evt.preventDefault();
+  event.preventDefault();
 
   // get info from form
   const title = $("#add-title").val();
@@ -132,3 +132,4 @@ function getStarButton(story, user) {
 }
 
 $storiesLists.on("click", ".star", clickFavorite);
+

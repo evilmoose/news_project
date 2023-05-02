@@ -17,7 +17,7 @@ const $navLogOut          = $("#nav-logout");
 // Here I add to the list of const variable that havent been added
 const $storiesLists       = $(".stories-list")
 const $submitForm         = $("#submit-form");  // adding new story form variable
-const $submitStoryLink    = $("submit-story-link");
+const $submitStoryLink    = $("#submit-story-link");
 const $storiesContainer   = $("#stories-container");
 const $favoritedStories   = $("#favorited-stories");
 const $myStories          = $("my-stories");

@@ -37,10 +37,12 @@ function updateNavOnLogin() {
 
 // function that is called when users click that navbar link.
 function submitStoryClick(evt) {
+  console.log("I click");
   console.debug("submitStoryClick", evt);
   hidePageComponents();
   $allStoriesList.show();
   $submitForm.show();
+  //console.log("I click");
 }
 
 $submitStoryLink.on("click", submitStoryClick);

@@ -21,8 +21,9 @@ async function getAndShowStoriesOnStart() {
 
 function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
-
+  console.log("generateStoryMarkup was called")
   const hostName = story.getHostName();
+  console.log(hostName);
 
   const showStar = Boolean(currentUser);
 
@@ -34,8 +35,8 @@ function generateStoryMarkup(story) {
           ${story.title}
         </a>
         <small class="story-hostname">(${hostName})</small>
-        <small class="story-author">by ${story.author}</small>
-        <small class="story-user">posted by ${story.username}</small>
+        <div class="story-author">by ${story.author}</small>
+        <div class="story-user">posted by ${story.username}</small>
       </div>
       </li>
     `);
@@ -84,14 +85,19 @@ $submitForm.on("submit", addNewStory);
 // Function to display facorites
 function displayFavorites() {
   console.debug("displayFavorites");
-
+  console.log("I displayFavorites called")
   $favoritedStories.empty();
 
+
+
   if (currentUser.favorites.length === 0) { 
+    console.log("was true")
     $favoritedStories.append("<h5>You have not added any favorites!</h5>");
   }
   else {
+    console.log("was false")
     for (let story of currentUser.favorites) {
+      console.log(story)
       const $story = generateStoryMarkup(story);
       $favoritedStories.append($story);
     }

@@ -30,7 +30,6 @@ const $myStories          = $("my-stories");
 
 function hidePageComponents() {
   const components = [
-    $allStoriesList,
     $loginForm,
     $signupForm,
     $storiesLists,

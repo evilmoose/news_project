@@ -37,7 +37,7 @@ function updateNavOnLogin() {
 
 // function that is called when users click that navbar link.
 function submitStoryClick(evt) {
-  console.log("I click");
+  console.log("Submit click");
   console.debug("submitStoryClick", evt);
   hidePageComponents();
   $allStoriesList.show();
@@ -49,9 +49,10 @@ $submitStoryLink.on("click", submitStoryClick);
 
 // Function for handling clicking on the 'favorites' link in the nav bar
 function favoritedStoriesClick(evt) {
-  console.debug("favoritedStoriesClick, evt");
+  console.log("favorite was click");
+  console.debug("favoritedStoriesClick", evt);
   hidePageComponents();
   displayFavorites();
 }
 
-$body.on("click", $favoritesLink, favoritedStoriesClick)
+$body.on("click", "#favorites-link", favoritedStoriesClick)

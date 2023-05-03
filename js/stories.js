@@ -139,3 +139,21 @@ function getStarButton(story, user) {
 
 $storiesLists.on("click", ".star", clickFavorite);
 
+function displayUserStories() {
+  console.debug("displayUserStories")
+
+  $userStories.empty();
+
+  if (currentUser.user.length === 0) {
+    $userStories.append("<h5>No user storries available!</h5>");
+  }
+  else {
+    for (let story of currentUser.ownStories) {
+      let $story = generateStoryMarkup(story, true);
+      $userStories.append($story);
+    }
+  }
+
+  $userStories.show();
+}
+

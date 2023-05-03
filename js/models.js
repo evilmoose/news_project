@@ -96,11 +96,11 @@ class StoryList {
     const token = user.loginToken;
     await axios({
       url: `${BASE_URL}/stories/${storyId}`,
-      mathod: "DELETE",
+      method: "DELETE",
       data: {token: user.loginToken}
     });
 
-    this.stories = this.stories.filter( story => story.storyID !== storyID);
+    this.stories = this.stories.filter( sty => sty.storyID !== storyId);
 
     user.ownStories = user.ownStories.filter(sty => sty.storyId !== storyId);
     user.favorites = user.favorites.filter(sty => sty.storyId !== storyId);

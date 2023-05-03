@@ -164,7 +164,7 @@ function displayUserStories() {
 function addDeleteButton() {
   return `
     <span class="trash-can">
-      <i class="fas fa-trash-alt"></li>
+      <i class="fas fa-trash-alt"></i>
     </sapan>`;
 }
 
@@ -172,10 +172,12 @@ function addDeleteButton() {
 async function deleteStory(event) {
   console.debug("deleteStory");
 
-  const $closetLi = $(evt.target).closest("li");
+  const $closetLi = $(event.target).closest("li");
   const storyId = $closetLi.attr("id");
 
   await storyList.removeStory(currentUser, storyId);
 
   await displayUserStories();
 }
+
+$userStories.on("click", ".trash-can", deleteStory);

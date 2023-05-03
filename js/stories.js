@@ -19,7 +19,7 @@ async function getAndShowStoriesOnStart() {
  * Returns the markup for the story.
  */
 
-function generateStoryMarkup(story) {
+function generateStoryMarkup(story, deleteButton = false) {
   // console.debug("generateStoryMarkup", story);
   console.log("generateStoryMarkup was called")
   const hostName = story.getHostName();
@@ -30,6 +30,7 @@ function generateStoryMarkup(story) {
   return $(`
       <li id="${story.storyId}">
       <div>
+        ${ deleteButton ? addDeleteButton() : ""}
         ${showStar ? getStarButton(story, currentUser) : ""}
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
@@ -139,6 +140,7 @@ function getStarButton(story, user) {
 
 $storiesLists.on("click", ".star", clickFavorite);
 
+// Function to display user created stories
 function displayUserStories() {
   console.debug("displayUserStories")
 
@@ -158,3 +160,22 @@ function displayUserStories() {
   $userStories.show();
 }
 
+// Create a delete button to click when you want to delete a user created story.
+function addDeleteButton() {
+  return `
+    <span class="trash-can">
+      <i class="fas fa-trash-alt"></li>
+    </sapan>`;
+}
+
+// Function to handle deleting a story
+async function deleteStory(event) {
+  console.debug("deleteStory");
+
+  const $closetLi = $(evt.target).closest("li");
+  const storyId = $closetLi.attr("id");
+
+  await storyList.removeStory(currentUser, storyId);
+
+  await displayUserStories();
+}

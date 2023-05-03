@@ -143,8 +143,9 @@ function displayUserStories() {
   console.debug("displayUserStories")
 
   $userStories.empty();
-
-  if (currentUser.user.length === 0) {
+  
+  console.log(currentUser.ownStories.length)
+  if (currentUser.ownStories.length === 0) {
     $userStories.append("<h5>No user storries available!</h5>");
   }
   else {

@@ -46,6 +46,18 @@ function submitStoryClick(evt) {
   //console.log("I click");
 }
 
+// Function to handle clicking on my stories
+function userStoriesClick(event) {
+  console.debug("userStoriesClick", event);
+  console.log("My stories clicked");
+
+  hidePageComponents();
+  displayUserStories();
+  $userStories.show();
+}
+
+$body.on("click", "#user-stories-link", userStoriesClick);
+
 $submitStoryLink.on("click", submitStoryClick);
 
 // Function for handling clicking on the 'favorites' link in the nav bar
